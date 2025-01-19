@@ -9,7 +9,7 @@ export default function Page() {
   return (
     <div className='bg-black/90 py-6 px-6 rounded w-[20rem] mx-auto h-fit'>
       <form className='space-y-3'>
-        <h2 className='text-xl'>Login</h2>
+        <h2 className='text-xl text-zinc-200'>Login</h2>
         <Input type="email" placeholder="Email" className='bg-[#333] placeholder:text-xs placeholder:text-gray-400  w-full' />
         <Input type="password" placeholder="Password" className='bg-[#333] placeholder:text-xs placeholder:text-gray-400 w-full ' />
         <Button className='w-full bg-[#e50914] hover:bg-red-800 text-white font-semibold'>Login</Button>
