@@ -9,6 +9,7 @@ import { Navlink } from "@/types/types";
 import { Search } from "lucide-react";
 import { Bell } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { signOut, useSession } from "next-auth/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,6 +20,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export default function Navbar() {
+  const { data: session } = useSession();
   const links: Navlink[] = [
     { name: "Home", url: "/" },
     { name: "TV Shows", url: "/home/tv-shows" },
@@ -32,6 +34,7 @@ export default function Navbar() {
     <nav className="w-full flex px-7 py-4 items-center">
       <Image src={Logo} alt="logo" width={120} priority />
       <div className="flex-grow flex justify-between items-center ml-10">
+        <ul className="md:flex gap-10 hidden w-full">
         <ul className="md:flex gap-10 hidden w-full">
           {links.map((item, idx) => (
             <li key={idx}>
@@ -55,19 +58,25 @@ export default function Navbar() {
             <DropdownMenuTrigger>
               <Avatar className="w-8 h-8 rounded-sm">
                 <AvatarImage
-                  src="https://github.com/shadcn.png"
+                  src={session?.user?.image|| ""}
                   alt="@shadcn"
                 />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="mr-7">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuLabel>{session?.user?.name}</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Profile</DropdownMenuItem>
               <DropdownMenuItem>Billing</DropdownMenuItem>
-              <DropdownMenuItem>Team</DropdownMenuItem>
               <DropdownMenuItem>Subscription</DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => {
+                  signOut();
+                }}
+              >
+                Signout
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
           <span className="absolute top-[90vh] right-0">
