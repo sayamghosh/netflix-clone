@@ -15,7 +15,7 @@ export default function Page() {
         <Button className='w-full bg-[#e50914] hover:bg-red-800 text-white font-semibold'>Signup</Button>
       </form>
       <div className='text-sm text-gray-600 mt-2'>
-      Already have an account?<Link href={'/login'} className='text-white hover:underline ml-1'>Login now!</Link>
+      Don’t have an account?<Link href={'/login'} className='text-white hover:underline ml-1'>Login now!</Link>
       </div>
       <div className='w-full items-center justify-center flex mt-4 gap-2'>
         <Button size="icon" variant={"outline"}><FcGoogle /></Button>

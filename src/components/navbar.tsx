@@ -35,7 +35,6 @@ export default function Navbar() {
       <Image src={Logo} alt="logo" width={120} priority />
       <div className="flex-grow flex justify-between items-center ml-10">
         <ul className="md:flex gap-10 hidden w-full">
-        <ul className="md:flex gap-10 hidden w-full">
           {links.map((item, idx) => (
             <li key={idx}>
               <Link
