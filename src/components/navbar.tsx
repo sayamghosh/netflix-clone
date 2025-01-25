@@ -32,7 +32,7 @@ export default function Navbar() {
     <nav className="w-full flex px-7 py-4 items-center">
       <Image src={Logo} alt="logo" width={120} priority />
       <div className="flex-grow flex justify-between items-center ml-10">
-        <ul className="md:flex gap-10 hidden">
+        <ul className="md:flex gap-10 hidden w-full">
           {links.map((item, idx) => (
             <li key={idx}>
               <Link
@@ -48,7 +48,7 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-        <div className="flex relative gap-4 items-center">
+        <div className="flex relative gap-4 items-center w-full justify-end">
           <Search />
           <Bell />
           <DropdownMenu>
