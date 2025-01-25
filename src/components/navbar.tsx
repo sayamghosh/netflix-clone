@@ -48,7 +48,7 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-        <div className="flex relative gap-4 items-center">
+        <div className="flex relative gap-4 items-center justify-end w-full">
           <Search />
           <Bell />
           <DropdownMenu>
