@@ -10,7 +10,7 @@ export default function Page() {
   const { status } = useSession(); 
   useEffect(() => {
     if(status !== 'authenticated') {
-      router.push('/login')
+      router.replace('/login')
     }
   }, [status, router]);
   return (

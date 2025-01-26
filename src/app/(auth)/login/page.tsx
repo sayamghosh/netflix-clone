@@ -15,7 +15,7 @@ export default function Page() {
   
   useEffect(() => {
     if (status === 'authenticated') {
-      router.push('/');
+      router.replace('/');
     }
   }, [status, router]);
 
