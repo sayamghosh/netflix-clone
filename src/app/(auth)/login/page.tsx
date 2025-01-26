@@ -5,20 +5,11 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { SiGithub } from "react-icons/si";
-import { signIn,useSession} from "next-auth/react";
-import { useRouter } from 'next/navigation';
-import { useEffect } from "react";
+import { signIn} from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
   const router = useRouter();
-  const { status } = useSession();
-  
-  useEffect(() => {
-    if (status === 'authenticated') {
-      router.push('/');
-    }
-  }, [status, router]);
-
   return (
     <div className="bg-black/90 py-6 px-6 rounded w-[20rem] mx-auto h-fit">
       <form className="space-y-3">
@@ -47,6 +38,7 @@ export default function Page() {
         <Button
           onClick={() => {
             signIn("google");
+            router.push("/");
           }}
           size="icon"
           variant={"outline"}
