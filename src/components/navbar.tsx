@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 import { Navlink } from "@/types/types";
 import { Search } from "lucide-react";
 import { Bell } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar,AvatarImage } from "@/components/ui/avatar";
 import { signOut, useSession } from "next-auth/react";
 import {
   DropdownMenu,
@@ -20,7 +20,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export default function Navbar() {
-  const path = usePathname();
   const { data: session } = useSession();
   const links: Navlink[] = [
     { name: "Home", url: "/" },

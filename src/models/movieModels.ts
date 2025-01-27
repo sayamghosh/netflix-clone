@@ -67,4 +67,5 @@ const watchListSchema = new Schema({
 })
 
 const Movie = models.Movie || mongoose.model("Movie", movieSchema);
-export default Movie;
+const WatchList = models.WatchList || mongoose.model("WatchList", watchListSchema);
+export  {Movie, WatchList};
