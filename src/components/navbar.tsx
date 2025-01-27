@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export default function Navbar() {
+  const path = usePathname();
   const { data: session } = useSession();
   const links: Navlink[] = [
     { name: "Home", url: "/" },
@@ -29,14 +30,15 @@ export default function Navbar() {
     { name: "My List", url: "/my-list" },
   ];
   const pathname = usePathname();
+  console.log(pathname);
 
   return (
     <nav className="w-full flex px-7 py-4 items-center">
       <Image src={Logo} alt="logo" width={120} priority />
-      <div className="flex-grow flex justify-between items-center ml-10">
-        <ul className="md:flex gap-10 hidden w-full">
+      <div className="flex lg:justify-between justify-end items-center ml-10 w-full">
+        <ul className="lg:flex gap-10 hidden w-full items-center">
           {links.map((item, idx) => (
-            <li key={idx}>
+            <li key={idx} className={`${pathname === "/"?"text-white":null}`}>
               <Link
                 href={item.url}
                 className={`${
@@ -50,9 +52,9 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-        <div className="flex relative gap-4 items-center w-full justify-end">
-          <Search />
-          <Bell />
+        <div className="flex relative gap-4 items-center">
+          <Search className={`${pathname === "/"?"text-foreground md:text-white":null}`}  />
+          <Bell className={`${pathname === "/"?"text-foreground md:text-white":null}`} />
           <DropdownMenu>
             <DropdownMenuTrigger>
               <Avatar className="w-8 h-8 rounded-sm">
@@ -60,7 +62,6 @@ export default function Navbar() {
                   src={session?.user?.image|| ""}
                   alt="@shadcn"
                 />
-                <AvatarFallback>CN</AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="mr-7">
@@ -78,7 +79,7 @@ export default function Navbar() {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <span className="absolute top-[90vh] right-0">
+          <span className="fixed top-[90vh] right-7">
             <ModeToggle />
           </span>
         </div>
