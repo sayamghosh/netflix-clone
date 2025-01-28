@@ -29,10 +29,9 @@ export default function Navbar() {
     { name: "My List", url: "/my-list" },
   ];
   const pathname = usePathname();
-  console.log(pathname);
 
   return (
-    <nav className="w-full flex px-7 py-4 items-center">
+    <nav className="w-full flex px-7 py-4 items-center z-100">
       <Image src={Logo} alt="logo" width={120} priority />
       <div className="flex lg:justify-between justify-end items-center ml-10 w-full">
         <ul className="lg:flex gap-10 hidden w-full items-center">
@@ -78,7 +77,7 @@ export default function Navbar() {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <span className="fixed top-[90vh] right-7">
+          <span className="fixed top-[90vh] right-7 z-50">
             <ModeToggle />
           </span>
         </div>
